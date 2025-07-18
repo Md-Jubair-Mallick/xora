@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { FC } from "react";
 import type { TestimonialItemProps } from "../types";
 
-const TestimonialItem:FC<TestimonialItemProps> = ({ item, containerClassName }) => {
+const TestimonialItem: FC<TestimonialItemProps> = ({ item, containerClassName }) => {
   return (
     <div
       className={clsx(
@@ -13,7 +13,7 @@ const TestimonialItem:FC<TestimonialItemProps> = ({ item, containerClassName }) 
       <blockquote className="h6 mb-8 text-p4">{item.comment}</blockquote>
 
       <div className="flex items-center max-xl:-mr-8">
-        <div className="mr-4 size-20 shrink-0 rounded-half border-2 border-s2 p-1.5">
+        <div className="mr-4 size-20 shrink-0 rounded-full border-3 border-s2 p-1.5">
           <img
             src={item.avatarUrl}
             alt={item.name}

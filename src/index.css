@@ -114,7 +114,7 @@
   }
 
   .h1 {
-    @apply text-[84px] font-black leading-[84px] tracking-[-0.03em];
+    @apply text-[84px] font-black leading-[84px] tracking-[-0.03em] max-lg:text-[64px] max-lg:leading-[64px] max-md:text-[48px] max-md:leading-[56px];
   }
 
   .h2 {
