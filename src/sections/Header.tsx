@@ -1,9 +1,16 @@
-import { Link as LinkScroll } from "react-scroll";
 import { useEffect, useState, type FC } from "react";
 import clsx from "clsx";
 import type { NavLinkProps } from "../types";
 
-const Header:FC = () => {
+const Header: FC = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+
   const [hasScrolled, setHasScrolled] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -19,19 +26,18 @@ const Header:FC = () => {
     };
   }, []);
 
-  const NavLink = ({ title }:NavLinkProps) => (
-    <LinkScroll
-      onClick={() => setIsOpen(false)}
-      to={title}
-      offset={-100}
-      spy
-      smooth
-      activeClass="nav-active"
+  const NavLink = ({ title }: NavLinkProps) => (
+    <span
+      onClick={() => {
+        setIsOpen(false);
+        scrollToSection(title);
+      }}
       className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1 max-lg:my-4 max-lg:h5"
     >
       {title}
-    </LinkScroll>
+    </span>
   );
+
 
   return (
     <header
@@ -61,14 +67,9 @@ const Header:FC = () => {
                 </li>
 
                 <li className="nav-logo">
-                  <LinkScroll
-                    to="hero"
-                    offset={-250}
-                    spy
-                    smooth
-                    className={clsx(
-                      "max-lg:hidden transition-transform duration-500 cursor-pointer",
-                    )}
+                  <span
+                    onClick={() => scrollToSection("hero")}
+                    className="max-lg:hidden transition-transform duration-500 cursor-pointer"
                   >
                     <img
                       src="/images/xora.svg"
@@ -76,7 +77,8 @@ const Header:FC = () => {
                       height={55}
                       alt="logo"
                     />
-                  </LinkScroll>
+                  </span>
+
                 </li>
 
                 <li className="nav-li">
